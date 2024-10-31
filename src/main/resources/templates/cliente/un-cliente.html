@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="~{layout/base :: head}"></head>
+<body>
+	<nav th:replace="~{layout/base :: navbar}"></nav>
+	<h1 th:text="${titular}"></h1>
+	<p th:text="${text}"></p>
+	<ul>
+		<li>Id: <span th:text="${cliente.id}"></span></li>
+		<li>Nombre: <span th:text="${cliente.nombre}"></span></li>
+		<li>Apellido: <span th:text="${cliente.apellido}"></span></li>
+		<li>Email: <span th:text="${cliente.email}"></span></li>
+	
+	</ul>
+	<footer th:replace="~{layout/base :: footer}"></footer>
+</body>
+</html>

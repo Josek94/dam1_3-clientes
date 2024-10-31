@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="~{layout/base :: head}"></head>
+<body>
+	<nav th:replace="~{layout/base :: navbar}"></nav>
+	<h1 th:text="${titular}"></h1>
+	<p th:text="${text}"></p>
+	<form th:action="@{/cliente/form}" th:object="${cliente}" method="post">
+		<table>
+			<tr>
+				<td>id</td>
+				<td><input type="text" th:field="*{id}" readonly></td>
+			</tr>
+			<tr>
+				<td>nombre</td>
+				<td><input type="text" th:field="*{nombre}"></td>
+				<td th:if="${#fields.hasErrors('nombre')}"><small th:errors="*{nombre}" class="form-text text-danger"></small></td>
+			</tr>
+			<tr>
+				<td>apellido</td>
+				<td><input type="text" th:field="*{apellido}"></td>
+				<td th:if="${#fields.hasErrors('apellido')}"><small th:errors="*{apellido}" class="form-text text-danger"></small></td>
+			</tr>
+			<tr>
+				<td>email</td>
+				<td><input type="text" th:field="*{email}"></td>
+				<td th:if="${#fields.hasErrors('email')}"><small th:errors="*{email}" class="form-text text-danger"></small></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Guardar"></td>
+			</tr>
+		</table>
+	</form>
+	<footer th:replace="~{layout/base :: footer}"></footer>
+</body>
+</html>

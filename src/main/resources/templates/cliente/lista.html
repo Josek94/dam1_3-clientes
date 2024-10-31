@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="~{layout/base :: head}"></head>
+<body>
+<nav th:replace="~{layout/base :: navbar}"></nav>
+	<div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
+	<div class="alert alert-error" th:if="${error != null}" th:text="${error}"></div>
+	<div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}"></div>
+	<div class="alert alert-info" th:if="${info != null}" th:text="${info}"></div>
+	<h1 th:text="${titular}"></h1>
+	<p th:text="${text}"></p>
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Email</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="cliente : ${clientes}">
+				<th th:text="${cliente.id}"></th>
+				<th th:text="${cliente.nombre}"></th>
+				<th th:text="${cliente.apellido}"></th>
+				<th th:text="${cliente.email}"></th>
+				<th><a th:href="@{/cliente/id/{id} (id=${cliente.id})}"><button>mostrar</button></a>
+				<a th:href="@{/cliente/delete/id/{id} (id=${cliente.id})}"><button>borrar</button></a>
+				<a th:href="@{/cliente/form/{id} (id=${cliente.id})}"><button>editar</button></a>
+				</th>				
+			</tr>
+		</tbody>
+	</table>
+	<footer th:replace="~{layout/base :: footer}"></footer>
+</body>
+</html>
